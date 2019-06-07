@@ -1,2 +1,6 @@
-npx create-react-app hotdog-rhythm-station #may need cd..
-npm install react-music
+#npx is way of nicely running (and installing) apps in modules folder
+npx create-react-app hotdog-rhythm-station # you may need to cd.. first
+npm install react-music # do not forget to cd back :D
+# <create blank github repo>
+git remote add origin git@github.com:mcmonkeys1/hotdog-rhythm-station.git
+
