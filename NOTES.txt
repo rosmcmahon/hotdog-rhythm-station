@@ -1,6 +1,13 @@
 #npx is way of nicely running (and installing) apps in modules folder
 npx create-react-app hotdog-rhythm-station # you may need to cd.. first
-npm install react-music # do not forget to cd back :D
+npm install react-music 
 # <create blank github repo>
 git remote add origin git@github.com:mcmonkeys1/hotdog-rhythm-station.git
 
+# install material-ui
+npm install @material-ui/core typeface-roboto @material-ui/icons
+# import 'typeface-roboto';
+
+...
+# we needed help with updating our state:
+npm install immutability-helper

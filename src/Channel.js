@@ -1,0 +1,109 @@
+import React from 'react';
+import Step from'./Step';
+
+export default function Channel ({num, seq, stepChange}) {
+	var index = 0;
+	return (
+		<div>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			<Step
+				sequence={index}
+				channel={num}
+				checked={seq[index++]}
+				stepChange={stepChange}
+			/>
+			
+			<br />
+		</div>
+	);
+
+}
