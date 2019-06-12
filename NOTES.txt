@@ -9,5 +9,4 @@ npm install @material-ui/core typeface-roboto @material-ui/icons
 # import 'typeface-roboto';
 
 ...
-# we needed help with updating our state:
-npm install immutability-helper
+
