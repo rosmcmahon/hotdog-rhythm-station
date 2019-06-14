@@ -15,8 +15,8 @@ export default class TempoField extends React.Component {
 	// 		console.log('PREVENT THIS')
 	// 		event.stopPropagation();
 	// 	}
-
 	// }
+
 	render(){
 		return (
 			<TextField
