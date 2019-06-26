@@ -19,20 +19,32 @@ For pattern/song saves use:- application/json. Serialize objects including seque
 I saw ArweaveID using 'App-Id': 'arweave-id'
 
 I think I should definitely have a name tag! e.g. 'Name': 'file.wav'
-Can we have key/wallet or linked to ArweaveID?
-let's try something...
-{}
+Research:
 
-OK, did a quick test with chrome extension (safe-mode off???).  It uploaded a .wav file as a webpage here: 
-http://arweave.net/XkfltfSIO7s2jQFh53Xa6oMeXGB09QJv0Mx8M432DPY
-Content-Type: text/html
-User-Agent: ArweaveChrome/2.1.3
-page:url: http://hotdogsystems.com/TR909_kick_hi.wav
-page:title: <this is usually grabbed form the html I guess>
-page:timestamp: 1560582713
+	OK, did a quick test with chrome extension (safe-mode off???).  It uploaded a .wav file as a webpage here: 
+		http://arweave.net/XkfltfSIO7s2jQFh53Xa6oMeXGB09QJv0Mx8M432DPY
+		Content-Type: text/html
+		User-Agent: ArweaveChrome/2.1.3
+		page:url: http://hotdogsystems.com/TR909_kick_hi.wav
+		page:title: <this is usually grabbed form the html I guess>
+		page:timestamp: 1560582713
+	This is a dead end.
 
-We will need to make changes to React-Music :-( We can include any github project! :-) See link... 
-(https://medium.com/@jonchurch/use-github-branch-as-dependency-in-package-json-5eb609c81f1a)
-npm install mcmonkeys1/react-music
--we can do branch installs with: npm install mcmonkeys1/react-music#MY_BRANCH_NAME
+	Extend React-Music:
+		We will need to make changes to React-Music :-( We can include any github project! :-) See link... 
+		(https://medium.com/@jonchurch/use-github-branch-as-dependency-in-package-json-5eb609c81f1a)
+		npm install mcmonkeys1/react-music
+		-we can do branch installs with: npm install mcmonkeys1/react-music#MY_BRANCH_NAME
 
+	TODO: use ArweaveID to display login: https://github.com/shenwilly/arweaveID
+
+OK, we're back. Just coded the login, so we have the wallet. Now to save project files
+	-serialize state.
+	-Tags:
+		'App-Id': `${process.env.npm_package_name}`
+		'App-Version': `${process.env.npm_package_version}`
+		'File-Name': <the name of the file>
+		'Date': `${Date.now()}`
+	-test our solution
+
+npm install arweave

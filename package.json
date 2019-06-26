@@ -1,13 +1,14 @@
 {
   "name": "hotdog-rhythm-station",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": ".",
-	"private": true,
-	"author": "rosmcmahon@gmail.com",
-  "license": "GPL",
+  "private": true,
+  "author": "rosmcmahon@gmail.com",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",
+    "arweave": "^1.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-music": "^1.0.3",

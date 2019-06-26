@@ -7,6 +7,7 @@ import TempoField from './components/TempoField'
 import ChannelGrid from './components/ChannelGrid'
 import MusicEngine from './components/MusicEngine'
 import Login from './components/Login'
+import * as DataStorage from './utils/DataStorage'
 
 
 class App extends React.Component {
@@ -60,23 +61,43 @@ class App extends React.Component {
 	}
 	/* Event Handlers */
 	onClickSave () {
+		const wallet = this.state.userWallet
 
+		if( Object.entries(wallet).length === 0 && wallet.constructor === Object ) { //check if object empty (use lodash?)
+			return alert('Error, please sign in') 
+		}
+
+		var save = JSON.stringify(this.state) // create copy of react state
+		//lets be careful with the user's wallet
+		save = JSON.parse(save)
+		delete save.userWallet
+		save = JSON.stringify(save) //good to go
+		
+		console.log(save)
+		
+		var name = "My First Filename" // we better do something with this later
+		//TODO: ask for user input
+		
+
+		const result = DataStorage.saveProject(name,save,wallet)
+
+		console.log(result)
+		//TODO: give the user the result of the save operation
 	}
 	onClickSignin () {
 		this.setState({ openLogin: true })
 	}
 	onChangeLogin (event) {
-		console.log('TRIGGERED!')
 		var wallet = {}
 		var fr = new FileReader()
 		fr.onload = (ev) => {
 			try {
 				wallet = JSON.parse(ev.target.result)
 					
-					this.setState({ userWallet: wallet, btnSigninText: "Signed In"})
+				this.setState({ userWallet: wallet, btnSigninText: "Signed In"})
 
-					console.log(wallet)
-				} catch (err) {
+				console.log(wallet)
+			} catch (err) {
 					alert('Error logging in: ' + err)
 			}
 		}
@@ -131,7 +152,7 @@ class App extends React.Component {
 							{this.state.playText}
 						</Button>
 						<TempoField value={this.state.tempo} tempoChange={this.tempoChange} />
-						<Button variant="contained" size="medium" >
+						<Button variant="contained" size="medium" onClick={this.onClickSave}>
 							Save
 							<SaveIcon  />
 						</Button>
