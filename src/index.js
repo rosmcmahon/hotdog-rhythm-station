@@ -14,6 +14,13 @@ const theme = createMuiTheme({
   },
 	typography: { 
 		 useNextVariants: true
+	},
+	overrides: {
+		MuiButton: {
+			root: {
+				margin: "15px"
+			}
+		}
 	}
 });
 

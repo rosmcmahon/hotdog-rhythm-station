@@ -9,4 +9,30 @@ npm install @material-ui/core typeface-roboto @material-ui/icons
 # import 'typeface-roboto';
 
 ...
+OK we managed to cobble together the React UI, using React to manage state, and using Materials-UI components
+	There's something weird happening with TextField type="number" - it's working somehow by throwing away undefined text input. Lovely lack of documentation.
+Adding react-music was relatively painless after much research.
+We're now attempting Arweave integration. Updating here as first step is to upload samples to the permaweb be used by the app:
+...OK so there are no data standards, but we have data tags. Messaged the Arweave guys: apart from 'Content-Type' do whatever you want. Maybe we can use:
+'Content-Type': audio/wav -see https://tools.ietf.org/html/draft-ema-vpim-wav-00
+For pattern/song saves use:- application/json. Serialize objects including sequences & samples URIs
+I saw ArweaveID using 'App-Id': 'arweave-id'
+
+I think I should definitely have a name tag! e.g. 'Name': 'file.wav'
+Can we have key/wallet or linked to ArweaveID?
+let's try something...
+{}
+
+OK, did a quick test with chrome extension (safe-mode off???).  It uploaded a .wav file as a webpage here: 
+http://arweave.net/XkfltfSIO7s2jQFh53Xa6oMeXGB09QJv0Mx8M432DPY
+Content-Type: text/html
+User-Agent: ArweaveChrome/2.1.3
+page:url: http://hotdogsystems.com/TR909_kick_hi.wav
+page:title: <this is usually grabbed form the html I guess>
+page:timestamp: 1560582713
+
+We will need to make changes to React-Music :-( We can include any github project! :-) See link... 
+(https://medium.com/@jonchurch/use-github-branch-as-dependency-in-package-json-5eb609c81f1a)
+npm install mcmonkeys1/react-music
+-we can do branch installs with: npm install mcmonkeys1/react-music#MY_BRANCH_NAME
 

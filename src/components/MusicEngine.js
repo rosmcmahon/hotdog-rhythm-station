@@ -7,6 +7,10 @@ export default class MusicEngine extends React.Component {
 		let numSteps = this.props.numSteps
 		let numChannels = this.props.numChannels
 		let activeSteps = [];
+		/* The following converts our boolean step arrays into step number array for react-music to parse.
+			This is very inefficient, the Sequencer should be using these directly and scheduling the notes 
+			just in time for them to be played by the AudioContext. Currently the whole bar is set. This is 
+			also causing audio glitching during live playback. */
 		for(let j=0; j<numChannels; ++j) {
 			let steps = this.props.sequences[j];
 			let newSteps = [];
@@ -16,8 +20,8 @@ export default class MusicEngine extends React.Component {
 				}
 			}
 			activeSteps[j] = newSteps;
-			console.log("activeSteps["+j+"] = " + activeSteps[j])
-			console.log("this.props.samples["+j+"]: " + this.props.samples[j])
+			// console.log("activeSteps["+j+"] = " + activeSteps[j])
+			// console.log("this.props.samples["+j+"]: " + this.props.samples[j])
 		}
 		
 		let channel = 0; //use this in mapping below

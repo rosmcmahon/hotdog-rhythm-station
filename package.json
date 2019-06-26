@@ -2,7 +2,9 @@
   "name": "hotdog-rhythm-station",
   "version": "0.1.0",
   "homepage": ".",
-  "private": true,
+	"private": true,
+	"author": "rosmcmahon@gmail.com",
+  "license": "GPL",
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",

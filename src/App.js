@@ -1,11 +1,12 @@
-import React from 'react';
-import logo from './assets/3d-dog.png';
-import { Grid, Button } from '@material-ui/core';
-import SaveIcon from '@material-ui/icons/Save';
-import './App.css';
-import TempoField from './components/TempoField';
-import ChannelGrid from './components/ChannelGrid';
+import React from 'react'
+import logo from './assets/3d-dog.png'
+import { Grid, Button } from '@material-ui/core'
+import SaveIcon from '@material-ui/icons/Save'
+import './App.css'
+import TempoField from './components/TempoField'
+import ChannelGrid from './components/ChannelGrid'
 import MusicEngine from './components/MusicEngine'
+import Login from './components/Login'
 
 
 class App extends React.Component {
@@ -22,7 +23,9 @@ class App extends React.Component {
 
 		//hardcode samples for release v1
 		let samples = Array(numChannels).fill(null);
-		samples[0] = 'assets/TR909_kick_hi.wav'
+		// samples[0] = 'http://arweave.net/XkfltfSIO7s2jQFh53Xa6oMeXGB09QJv0Mx8M432DPY'
+		samples[0] = 'http://localhost:3000/assets/TR909_kick_hi.wav'
+		//samples[0] = 'assets/TR909_kick_hi.wav'
 		samples[1] = 'assets/TR909_snare.wav'
 		samples[2] = 'assets/TR909_clap.wav'
 		samples[3] = 'assets/TR909_closedhat.wav'
@@ -42,39 +45,61 @@ class App extends React.Component {
 			playText: "PLAY",
 			tempo: 140,
 			sequences: sequences,
-			samples: samples
+			samples: samples,
+			//arweave stuff
+			userWallet: {},
+			btnSigninText: "Sign In",
+			openLogin: false
 		}
 		this.stepChange = this.stepChange.bind(this);
 		this.tempoChange = this.tempoChange.bind(this);
 		this.playClick = this.playClick.bind(this);
+		this.onClickSignin = this.onClickSignin.bind(this);
+		this.onChangeLogin = this.onChangeLogin.bind(this);
+		this.onClickSave = this.onClickSave.bind(this);
 	}
+	/* Event Handlers */
+	onClickSave () {
 
+	}
+	onClickSignin () {
+		this.setState({ openLogin: true })
+	}
+	onChangeLogin (event) {
+		console.log('TRIGGERED!')
+		var wallet = {}
+		var fr = new FileReader()
+		fr.onload = (ev) => {
+			try {
+				wallet = JSON.parse(ev.target.result)
+					
+					this.setState({ userWallet: wallet, btnSigninText: "Signed In"})
+
+					console.log(wallet)
+				} catch (err) {
+					alert('Error logging in: ' + err)
+			}
+		}
+		fr.readAsText( event.target.files[0] )
+		this.setState({openLogin: false})
+	}
 	stepChange (event) {
 		let step = event.target
 		let check = step.checked;
 		let seq = step.id;
 		let channel = step.value;
 
-		const newState = JSON.parse(JSON.stringify(this.state))
-		newState.sequences[channel][seq] = check;
-		this.setState(newState);
+		const newSequences = JSON.parse(JSON.stringify(this.state.sequences))
+		newSequences[channel][seq] = check;
+		this.setState({ sequences: newSequences });
 	}
 	tempoChange (event) {
-		let field = event.target;
-		let newText = field.value
-		//let oldText = this.state.tempo
-		
-		console.log(
-			'tempoChange: '
-			+' newText: '+newText
-			+' this.state.tempo: '+this.state.tempo
-		)
+		let newText = event.target.value
+	
 		if (newText !== "") {
 			let newNum = parseInt(newText)
 			this.setState({ tempo: newNum });
-			console.log('tempo updated!')
 		}
-		console.log('this.state.tempo: '+this.state.tempo)
 	}
 	playClick () {
 		if (!this.state.playing) { this.setState({ playing: true, playText: "STOP" }) }
@@ -85,6 +110,8 @@ class App extends React.Component {
 			<div className='App'>
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="hotdog logo" />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
+					<Button margin="normal" variant="outlined" color="primary" onClick={this.onClickSignin}>{this.state.btnSigninText}</Button>
+					<Login onClose={this.onLoginClose} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
 				</header>
 				<Grid
 					container
