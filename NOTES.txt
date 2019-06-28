@@ -44,7 +44,32 @@ OK, we're back. Just coded the login, so we have the wallet. Now to save project
 		'App-Id': `${process.env.npm_package_name}`
 		'App-Version': `${process.env.npm_package_version}`
 		'File-Name': <the name of the file>
-		'Date': `${Date.now()}`
+		'Unix-Time': `${Date.now()}`
 	-test our solution
 
 npm install arweave
+npm install react-toastify
+
+OK I have made some new project decisions as this is taking too long:
+1	-save to one project file without asking user for input
+	& always open the latest version of the file from permaweb
+2	-hardcode the wav sample files as base64 JS
+	we still need to add features to react-music to accept ArrayBuffer!\
+** 1 & 2: This means we can leave all the FileDialog stuff for another re-useable project =)
+3	-leave out other niceties, this is supposed to be proof of concept
+		ignore checking for remaining arweave balance
+		do not add features to add remove channels
+		absolute minimum controls for each channel -Name & Volume (material-ui slider)
+
+arweave status 2jt0ffkYiveMY8N-XHhEB5Ni_64k99KduxYqboYP1Fk
+//TODO -after pressing Save:
+					disable Save button
+					setTimeout to check tx status - toast once done confirmed (200):-
+
+					arweave.transactions.getStatus('2jt0ffkYiveMY8N-XHhEB5Ni_64k99KduxYqboYP1Fk').then(status => {
+						if (status == 200){
+							toast.success("Congratulations! Your pattern has been saved to the permaweb")
+							// Re-enable Save Button here
+						}
+					})					
+

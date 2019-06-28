@@ -9,6 +9,22 @@ import MusicEngine from './components/MusicEngine'
 import Login from './components/Login'
 import * as DataStorage from './utils/DataStorage'
 
+/* this is for toast popups */
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure({
+	position: "top-left", 
+	autoClose: 10000
+})
+
+// toast.info('test.')
+// toast.success('test.')
+// toast.warning('test.')
+// toast.error('test.')
+
+
+
+
 
 class App extends React.Component {
 	constructor() {
@@ -58,13 +74,31 @@ class App extends React.Component {
 		this.onClickSignin = this.onClickSignin.bind(this);
 		this.onChangeLogin = this.onChangeLogin.bind(this);
 		this.onClickSave = this.onClickSave.bind(this);
+		this.onClickLoad = this.onClickLoad.bind(this);
 	}
 	/* Event Handlers */
+	onClickLoad (){
+		const wallet = this.state.userWallet
+
+		if( Object.entries(wallet).length === 0 && wallet.constructor === Object ) { //check if object empty (use lodash?)
+			return toast.error('Error, please sign in') 
+		}
+
+		DataStorage.loadProject(wallet, this.state)
+		.then((savedState) => {
+			this.setState(savedState);
+			toast.success('Saved Project Loaded')
+		})
+		.catch((e)=> {
+			console.error(e)
+			toast.error(JSON.stringify(e))
+		})
+	}
 	onClickSave () {
 		const wallet = this.state.userWallet
 
 		if( Object.entries(wallet).length === 0 && wallet.constructor === Object ) { //check if object empty (use lodash?)
-			return alert('Error, please sign in') 
+			return toast.error('Error, please sign in') 
 		}
 
 		var save = JSON.stringify(this.state) // create copy of react state
@@ -75,14 +109,28 @@ class App extends React.Component {
 		
 		console.log(save)
 		
-		var name = "My First Filename" // we better do something with this later
-		//TODO: ask for user input
-		
+		var name = "FirstLoop" // we better do something with this later
+		//TODO: ask for user input - FileDialog?
+		/* Lets standardize the dialog for reuse as much as possible:
+			e.g.:
+			<FileDialog
+    		extensions={['md']}
+    		onChange={FileObject => ( << do something with File object >> )}
+    		onError={errMsg => ( << do something with err msg string >>)
+			/>
+			Use selectable List from material-ui
+		*/
 
-		const result = DataStorage.saveProject(name,save,wallet)
+		/* THIS IS AN ASYNC FUNCTION  */
+		DataStorage.saveProject(name,save,wallet)
+		.then( (msg) => {
 
-		console.log(result)
-		//TODO: give the user the result of the save operation
+			toast.success(msg) 
+		})
+		.catch((e)=>toast.error(e))
+
+		toast.info("Saving to the premaweb... Please wait for updates")
+
 	}
 	onClickSignin () {
 		this.setState({ openLogin: true })
@@ -96,7 +144,6 @@ class App extends React.Component {
 					
 				this.setState({ userWallet: wallet, btnSigninText: "Signed In"})
 
-				console.log(wallet)
 			} catch (err) {
 					alert('Error logging in: ' + err)
 			}
@@ -156,7 +203,7 @@ class App extends React.Component {
 							Save
 							<SaveIcon  />
 						</Button>
-						<Button variant="contained" size="medium" >
+						<Button variant="contained" size="medium"  onClick={this.onClickLoad}>
 							Load
 							<SaveIcon  />
 						</Button>
