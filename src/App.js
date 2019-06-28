@@ -8,6 +8,10 @@ import ChannelGrid from './components/ChannelGrid'
 import MusicEngine from './components/MusicEngine'
 import Login from './components/Login'
 import * as DataStorage from './utils/DataStorage'
+import { decode } from 'base64-arraybuffer';
+
+/* Import wavs as base64 objects */
+import Samples from './assets/Samples'
 
 /* this is for toast popups */
 import { toast } from 'react-toastify';
@@ -16,13 +20,12 @@ toast.configure({
 	position: "top-left", 
 	autoClose: 10000
 })
-
 // toast.info('test.')
 // toast.success('test.')
 // toast.warning('test.')
 // toast.error('test.')
 
-
+const { TR909_kick_hi } = Samples
 
 
 
@@ -40,8 +43,8 @@ class App extends React.Component {
 
 		//hardcode samples for release v1
 		let samples = Array(numChannels).fill(null);
-		// samples[0] = 'http://arweave.net/XkfltfSIO7s2jQFh53Xa6oMeXGB09QJv0Mx8M432DPY'
-		samples[0] = 'http://localhost:3000/assets/TR909_kick_hi.wav'
+		samples[0] = decode(TR909_kick_hi)
+		//samples[0] = 'http://localhost:3000/assets/TR909_kick_hi.wav'
 		//samples[0] = 'assets/TR909_kick_hi.wav'
 		samples[1] = 'assets/TR909_snare.wav'
 		samples[2] = 'assets/TR909_clap.wav'
@@ -77,6 +80,11 @@ class App extends React.Component {
 		this.onClickLoad = this.onClickLoad.bind(this);
 	}
 	/* Event Handlers */
+	// componentDidMount() {
+	// 	let samples = []
+	// 	samples[0] = decode(TR909_kick_hi)
+	// 	this.setState({ samples: samples })
+	// }
 	onClickLoad (){
 		const wallet = this.state.userWallet
 

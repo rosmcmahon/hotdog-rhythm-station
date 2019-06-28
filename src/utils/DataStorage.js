@@ -73,7 +73,7 @@ export async function loadProject (wallet, state) {
 	}
 
 	const txids = await arweave.arql(getAllProjects);
-	// console.log("Number of saved projects: " + txids.length)
+	//  console.log("Number of saved projects: " + txids.length)
 	
 	//get all the transactions for our IDs
 	const txs = await Promise.all( txids.map( txid => arweave.transactions.get(txid) ) )
