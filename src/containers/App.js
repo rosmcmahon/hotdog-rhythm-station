@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../assets/3d-dog.png'
 import { Grid, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
+import SendIcon from '@material-ui/icons/Send'
 import './App.css'
 import TempoField from '../components/TempoField'
 import ChannelGrid from '../components/ChannelGrid'
@@ -43,8 +44,11 @@ class App extends React.Component {
 			sequences[i] = Array(numSteps).fill(false); 
 		}
 
-		//hardcode samples for release v1
+		/* hardcode samples for release v1 - in future will be dynamically loaded from permaweb */
+		// ***** NEED TO REWRITE THE SAMPLES/CHANNELS AS OBJECTS & GET RID OF ALL THE STUPID ARRAYS ****
+		let gains = Array(numChannels).fill( 0.5 );
 		let samples = Array(numChannels).fill(null);
+		let names = Array(numChannels).fill("");
 		samples[0] = decode(TR909_kick_hi)
 		samples[1] = decode(TR909_clap)
 		samples[2] = decode(TR909_snare)
@@ -53,6 +57,14 @@ class App extends React.Component {
 		samples[5] = decode(TR909_rimshot)
 		samples[6] = decode(TR909_ride)
 		samples[7] = decode(TR909_tom_1)
+		names[0] = "TR909_kick_hi"
+		names[1] = "TR909_clap"
+		names[2] = "TR909_snare"
+		names[3] = "TR909_closedhat"
+		names[4] = "TR909_openhat"
+		names[5] = "TR909_rimshot"
+		names[6] = "TR909_ride"
+		names[7] = "TR909_tom_1"
 
 
 		// set app state
@@ -64,6 +76,8 @@ class App extends React.Component {
 			tempo: 140,
 			sequences: sequences,
 			samples: samples,
+			gains: gains,
+			names: names,
 			status: "",
 			//arweave stuff
 			userWallet: {},
@@ -78,8 +92,15 @@ class App extends React.Component {
 		this.onClickSave = this.onClickSave.bind(this);
 		this.onClickLoad = this.onClickLoad.bind(this);
 		this.onCloseLogin = this.onCloseLogin.bind(this);
+		this.onChangeGain = this.onChangeGain.bind(this);
 	}
 	/* Event Handlers */
+	onChangeGain (event, value) {
+		let channel = event.target.id
+		let gains = JSON.parse(JSON.stringify(this.state.gains))
+		gains[channel] = value
+		this.setState({ gains: gains })
+	}
 	onClickLoad (){
 		const wallet = this.state.userWallet
 
@@ -110,7 +131,7 @@ class App extends React.Component {
 		delete save.userWallet
 		save = JSON.stringify(save) //good to go
 		
-		console.log(save)
+		//console.log(save)
 		
 		var name = "FirstLoop" // we better do something with this later
 		//TODO: ask for user input - FileDialog?
@@ -204,16 +225,22 @@ class App extends React.Component {
 						</Button>
 						<TempoField value={this.state.tempo} tempoChange={this.tempoChange} />
 						<Button variant="contained" size="medium" onClick={this.onClickSave}>
-							Save
-							<SaveIcon  />
+							Save &nbsp;
+						<SendIcon  />
 						</Button>
 						<Button variant="contained" size="medium"  onClick={this.onClickLoad}>
-							Load
+							Load &nbsp;
 							<SaveIcon  />
 						</Button>
 					</Grid>
 					<Grid item xs={10} >
-						<ChannelGrid sequencegrid={this.state.sequences} stepChange={this.stepChange} />
+						<ChannelGrid 
+							sequencegrid={this.state.sequences} 
+							gains={this.state.gains} 
+							names={this.state.names} 
+							stepChange={this.stepChange} 
+							onChangeGain={this.onChangeGain} 
+						/>
 					</Grid>
 				</Grid>
 				<MusicEngine 
@@ -223,6 +250,7 @@ class App extends React.Component {
 					numChannels={this.state.numChannels}
 					sequences={this.state.sequences}
 					samples={this.state.samples}
+					gains={this.state.gains}
 				/>
 			</div>
   	);

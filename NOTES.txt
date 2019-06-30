@@ -82,5 +82,14 @@ npm uninstall react-music
 -in react-music fork: npm run build & remove 'lib' from gitignore & push
 npm install mcmonkeys1/react-music#sample-arraybuffer
 
-...fixing login dialog escape...:
-added onRequestClose
+npm install @material-ui/lab
+-issue with outdated modules, fixing with:
+Attempted import error: 'useIsFocusVisible' is not exported from '@material-ui/core/utils'.
+npm outdated
+>Package             Current  Wanted  Latest  Location
+>@material-ui/core     4.0.2   4.1.3   4.1.3  hotdog-rhythm-station
+>@material-ui/icons    4.0.1   4.2.1   4.2.1  hotdog-rhythm-station
+>react-music           1.0.4     git     git  hotdog-rhythm-station
+
+npm install --save @material-ui/core@latest
+npm install --save @material-ui/core@latest

@@ -2,7 +2,7 @@ import React from 'react'
 import { Song, Sequencer, Sampler } from 'react-music';
 
 export default class MusicEngine extends React.Component {
-	// ({ playing, tempo, numSteps, numChannels, sequences, samples}) {
+	// ({ playing, tempo, numSteps, numChannels, sequences, samples, gains}) {
 	render() {
 		let numSteps = this.props.numSteps
 		let numChannels = this.props.numChannels
@@ -20,10 +20,7 @@ export default class MusicEngine extends React.Component {
 				}
 			}
 			activeSteps[j] = newSteps;
-			// console.log("activeSteps["+j+"] = " + activeSteps[j])
-			// console.log("this.props.samples["+j+"]: " + this.props.samples[j])
-		}
-		
+		}		
 		let channel = 0; //use this in mapping below
 		
 		return (
@@ -37,11 +34,12 @@ export default class MusicEngine extends React.Component {
 						bars={1} // hardcoded ...for now
 					>
 						{ this.props.sequences.map((s) => (
-								<Sampler
-									key={channel}
-									sample={this.props.samples[channel]}
-									steps={activeSteps[channel++]}
-								/>
+							<Sampler
+								gain={this.props.gains[channel]}
+								key={channel}
+								sample={this.props.samples[channel]}
+								steps={activeSteps[channel++]}
+							/>
 						))}
 					</Sequencer>
 				</Song>

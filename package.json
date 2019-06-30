@@ -6,8 +6,9 @@
   "author": "rosmcmahon@gmail.com",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@material-ui/core": "^4.0.2",
-    "@material-ui/icons": "^4.0.1",
+    "@material-ui/core": "^4.1.3",
+    "@material-ui/icons": "^4.2.1",
+    "@material-ui/lab": "^4.0.0-alpha.18",
     "arweave": "^1.4.0",
     "base64-arraybuffer": "^0.2.0",
     "react": "^16.8.6",

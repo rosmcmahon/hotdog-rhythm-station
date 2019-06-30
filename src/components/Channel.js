@@ -1,10 +1,15 @@
 import React from 'react';
 import Step from'./Step';
+import { Paper } from '@material-ui/core';
+import { Slider } from '@material-ui/lab'
 
-export default function Channel ({channel, seq, stepChange}) {
+
+
+export default function Channel ({channel, seq, stepChange, gain, name, onChangeGain}) {
 	var index = 0;
 	return (
-		<div>
+		<span>
+			<span style={{textAlign: 'left'}}>
 			{
 				// This unfolds the input sequence of boolean checks into a loop creating Step components
 				seq.map((s) => (
@@ -17,7 +22,21 @@ export default function Channel ({channel, seq, stepChange}) {
 					/>
 				))
 			}
-		</div>
+			</span>
+			<Paper component="span" style={{padding: 5}}>
+				<Slider 
+					id={channel} 
+					value={gain} 
+					onChange={onChangeGain} 
+					min={0.0}
+					max={1.0}
+					step={0.01}
+					style={{width: 50, padding: 5}}
+					
+				/>
+				<span >{name}</span>
+			</Paper>
+		</span>
 	);
 
 }
