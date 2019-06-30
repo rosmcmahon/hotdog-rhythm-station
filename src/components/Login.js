@@ -8,7 +8,7 @@ export default function Login ({onClose, open, onChangeFile}) {
 	return (
 		<Dialog 
 			open={open} 
-			onClose={onClose} 
+			onClose={onClose}
 			fullWidth={true}
 			maxWidth={'md'}
 		>

@@ -1,17 +1,16 @@
 import React from 'react'
-import logo from './assets/3d-dog.png'
+import logo from '../assets/3d-dog.png'
 import { Grid, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import './App.css'
-import TempoField from './components/TempoField'
-import ChannelGrid from './components/ChannelGrid'
-import MusicEngine from './components/MusicEngine'
-import Login from './components/Login'
-import * as DataStorage from './utils/DataStorage'
+import TempoField from '../components/TempoField'
+import ChannelGrid from '../components/ChannelGrid'
+import MusicEngine from '../components/MusicEngine'
+import StatusBox from '../components/StatusBox';
+import Login from '../components/Login'
+import * as DataStorage from '../utils/DataStorage'
 import { decode } from 'base64-arraybuffer';
-
-/* Import wavs as base64 objects */
-import Samples from './assets/Samples'
+import Samples from '../assets/Samples'
 
 /* this is for toast popups */
 import { toast } from 'react-toastify';
@@ -19,20 +18,23 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure({
 	position: "top-left", 
 	autoClose: 10000
-})
-// toast.info('test.')
-// toast.success('test.')
-// toast.warning('test.')
-// toast.error('test.')
+}) // toast.info('test') toast.success('test') toast.warning('test') toast.error('test')
 
-const { TR909_kick_hi } = Samples
+const { TR909_kick_hi, 
+	TR909_clap, 
+	TR909_snare, 
+	TR909_closedhat, 
+	TR909_openhat, 
+	TR909_rimshot, 
+	TR909_ride, 
+	TR909_tom_1 } = Samples
 
 
 
 class App extends React.Component {
 	constructor() {
 		super();
-		const numChannels = 10; 
+		const numChannels = 8; 
 		const numSteps = 16; 
 		
 		//init sequences with falses 
@@ -44,17 +46,13 @@ class App extends React.Component {
 		//hardcode samples for release v1
 		let samples = Array(numChannels).fill(null);
 		samples[0] = decode(TR909_kick_hi)
-		//samples[0] = 'http://localhost:3000/assets/TR909_kick_hi.wav'
-		//samples[0] = 'assets/TR909_kick_hi.wav'
-		samples[1] = 'assets/TR909_snare.wav'
-		samples[2] = 'assets/TR909_clap.wav'
-		samples[3] = 'assets/TR909_closedhat.wav'
-		samples[4] = 'assets/TR909_openhat.wav'
-		samples[5] = 'assets/TR909_rimshot.wav'
-		samples[6] = 'assets/TR909_ride.wav'
-		samples[7] = 'assets/TR909_crash.wav'
-		samples[8] = 'assets/TR909_tom_1.wav'
-		samples[9] = 'assets/TR909_tom_2.wav'
+		samples[1] = decode(TR909_clap)
+		samples[2] = decode(TR909_snare)
+		samples[3] = decode(TR909_closedhat)
+		samples[4] = decode(TR909_openhat)
+		samples[5] = decode(TR909_rimshot)
+		samples[6] = decode(TR909_ride)
+		samples[7] = decode(TR909_tom_1)
 
 
 		// set app state
@@ -66,6 +64,7 @@ class App extends React.Component {
 			tempo: 140,
 			sequences: sequences,
 			samples: samples,
+			status: "",
 			//arweave stuff
 			userWallet: {},
 			btnSigninText: "Sign In",
@@ -78,13 +77,9 @@ class App extends React.Component {
 		this.onChangeLogin = this.onChangeLogin.bind(this);
 		this.onClickSave = this.onClickSave.bind(this);
 		this.onClickLoad = this.onClickLoad.bind(this);
+		this.onCloseLogin = this.onCloseLogin.bind(this);
 	}
 	/* Event Handlers */
-	// componentDidMount() {
-	// 	let samples = []
-	// 	samples[0] = decode(TR909_kick_hi)
-	// 	this.setState({ samples: samples })
-	// }
 	onClickLoad (){
 		const wallet = this.state.userWallet
 
@@ -130,18 +125,18 @@ class App extends React.Component {
 		*/
 
 		/* THIS IS AN ASYNC FUNCTION  */
-		DataStorage.saveProject(name,save,wallet)
-		.then( (msg) => {
+		DataStorage.saveProject(name,save,wallet,this)
+		.then( msg => this.setState({status:msg}) )
+		.catch(e => this.setState({status:e}))
 
-			toast.success(msg) 
-		})
-		.catch((e)=>toast.error(e))
-
-		toast.info("Saving to the premaweb... Please wait for updates")
+		this.setState({status:"Sending project to the permaweb..."})
 
 	}
 	onClickSignin () {
 		this.setState({ openLogin: true })
+	}
+	onCloseLogin () {
+		this.setState({ openLogin: false })
 	}
 	onChangeLogin (event) {
 		var wallet = {}
@@ -187,8 +182,9 @@ class App extends React.Component {
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="hotdog logo" />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
 					<Button margin="normal" variant="outlined" color="primary" onClick={this.onClickSignin}>{this.state.btnSigninText}</Button>
-					<Login onClose={this.onLoginClose} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
+					<Login onClose={this.onCloseLogin} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
 				</header>
+				<StatusBox msg={this.state.status} />
 				<Grid
 					container
 					direction="row"

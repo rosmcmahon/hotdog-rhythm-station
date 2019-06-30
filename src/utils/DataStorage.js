@@ -27,13 +27,13 @@ function getTxTagValue (tx, tagname) {
 	return tags[tagname]
 };
 
-export async function saveProject (name, state, wallet) {
+export async function saveProject (name, save, wallet, appObj) {
 	console.log("entered saveProject ...")
 
 	// Create Transaction & fill it with data and tags
 	
 	let tx = await arweave.createTransaction({
-		data: Buffer.from(state,'utf-8')
+		data: Buffer.from(save,'utf-8')
 	}, wallet)
 	
 	tx.addTag('App-Id', appId)
@@ -41,11 +41,11 @@ export async function saveProject (name, state, wallet) {
 	tx.addTag('File-Name', name)
 	tx.addTag('Unix-Time', Date.now() )
 	
-	console.log(tx.id)
-	
 	await arweave.transactions.sign(tx, wallet);
+	var txid = tx.id
+	console.log(txid)
 	
-	const response = await arweave.transactions.post(tx)
+	let response = await arweave.transactions.post(tx)
 	
 	console.log(response);
 
@@ -54,7 +54,23 @@ export async function saveProject (name, state, wallet) {
 		throw new Error(JSON.stringify(response))
 	}
 
-	return `Your save status is: ${response.statusText} (${response.status}) `
+	setInterval (async() => {
+		let response = await arweave.transactions.getStatus(txid)
+		const codes = {
+			200: 'Permanently saved 😄',
+			202: 'Pending ⛏',
+			404: 'Not found (or not yet propagated, this can take a few seconds)',
+			400: 'Invalid transaction',
+			410: 'Transaction failed',
+			500: 'Unknown error'
+		}
+		let msg = "Permaweb save status: " + codes[response.status]
+		
+		appObj.setState({status: msg })
+
+	}, 10000);
+
+	return `Save status ${response.statusText}. Please wait for confirmation`
 }
 
 export async function loadProject (wallet, state) {

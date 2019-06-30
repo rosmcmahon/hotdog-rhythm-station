@@ -50,6 +50,17 @@ OK I have made some new project decisions as this is taking too long:
 		ignore checking for remaining arweave balance
 		do not add features to add remove channels
 		absolute minimum controls for each channel -Name & Volume (material-ui slider)
+**
+		//TODO: ask for user input - FileDialog?
+		/* Lets standardize the dialog for reuse as much as possible:
+			e.g.:
+			<FileDialog
+    		extensions={['md']}
+    		onChange={FileObject => ( << do something with File object >> )}
+    		onError={errMsg => ( << do something with err msg string >>)
+			/>
+			Use selectable List from material-ui
+		*/
 
 arweave status 2jt0ffkYiveMY8N-XHhEB5Ni_64k99KduxYqboYP1Fk
 //TODO -after pressing Save:
@@ -70,3 +81,6 @@ npm install base64-arraybuffer
 npm uninstall react-music
 -in react-music fork: npm run build & remove 'lib' from gitignore & push
 npm install mcmonkeys1/react-music#sample-arraybuffer
+
+...fixing login dialog escape...:
+added onRequestClose
