@@ -93,3 +93,27 @@ npm outdated
 
 npm install --save @material-ui/core@latest
 npm install --save @material-ui/core@latest
+
+npm run build
+arweave package .\build\index.html .\build-pkg\index.html
+
+///////////////////////////////////////////////////////////////////
+Path: index.html
+Size: 1.11 MB
+Price: 0.071225187987 AR
+Tags:
+ - Content-Type:text/html
+ - User-Agent:ArweaveDeploy/1.3.0
+-------------------------------------------------
+Trasaction ID: LjNbROpArTJUKiZUhQxRAnyzNu-Ph4ibJsALBIZn5Rk
+Status: 200 Accepted �🚀
+ - Block: 229957
+ - Block hash: RI_Ledna2xa7bXOhQ4tQVcUzIl8gWfY_481lfnOTxrEHV7q3cVuumRtci0wgi5sr
+ - Confirmations: 7
+URL: https://arweave.net/LjNbROpArTJUKiZUhQxRAnyzNu-Ph4ibJsALBIZn5Rk
+//////////////////////////////////////////////////////////////////
+-Testing...
+-Chrome has fussy new rules for AudioContext, needs a rewrite
+-assets not being loaded after arweave package, se this brfore npm run build:
+$env:GENERATE_SOURCEMAP = "false"
+-Seems to fix the issue

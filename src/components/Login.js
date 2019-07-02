@@ -24,10 +24,10 @@ export default function Login ({onClose, open, onChangeFile}) {
 				<InputFile onChangeFile={onChangeFile} />
 				<Typography variant="body1">
 							<br/>
-							Hotdog Rhythm Station is a drum machine that Google cannot see...<br />
-							Unstoppable drum patterns that cannot be censored...<br/>
-							Patterns that cannot be lost..<br/>
-							<span style={{display: "inline-block", marginTop: "0.5em", marginBottom: "0.75em"}}>Well.. unless you lose your wallet key ;-)</span>
+							Hotdog Rhythm Station is a drum machine that lives on the permaweb. Your drum patterns are saved to the permaweb forever.<br/>
+							Permanent saves take some time to process, please be patient and pay attention to in app messages<br/>
+							Remember, when your project is sent to the permaweb it is available forever...
+							<span style={{display: "inline-block", marginTop: "0.5em", marginBottom: "0.75em"}}>...so be careful what you save! ;-)</span>
 				</Typography>
 				<Button 
 							variant="outlined" color="secondary"

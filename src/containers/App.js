@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/3d-dog.png'
+import Image3dDog from '../assets/Image3dDog'
 import { Grid, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import SendIcon from '@material-ui/icons/Send'
@@ -29,8 +29,6 @@ const { TR909_kick_hi,
 	TR909_rimshot, 
 	TR909_ride, 
 	TR909_tom_1 } = Samples
-
-
 
 class App extends React.Component {
 	constructor() {
@@ -201,7 +199,7 @@ class App extends React.Component {
 		return (
 			<div className='App'>
 				<header className="App-header">
-					<img src={logo} className="App-logo" alt="hotdog logo" />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
+					<Image3dDog />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
 					<Button margin="normal" variant="outlined" color="primary" onClick={this.onClickSignin}>{this.state.btnSigninText}</Button>
 					<Login onClose={this.onCloseLogin} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
 				</header>
@@ -244,7 +242,7 @@ class App extends React.Component {
 					</Grid>
 				</Grid>
 				<MusicEngine 
-					playing={this.state.playing}
+					playing={this.state.playing} 
 					tempo={this.state.tempo}
 					numSteps={this.state.numSteps}
 					numChannels={this.state.numChannels}

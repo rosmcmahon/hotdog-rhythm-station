@@ -13,7 +13,7 @@ export default function InputFile ({onChangeFile}) {
 			/>
 			<InputLabel htmlFor="fileinput">
 				<div style={{borderStyle: "dashed", padding: "5%"}}>
-					<Typography variant="h4">Drop a keyfile here to login.</Typography>
+					<Typography variant="h4">Drop or select a keyfile here.</Typography>
 				</div>
 			</InputLabel>
 		</div>
