@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hotdog Rhythm Station
 
-## Available Scripts
+A version of this app can be found running [https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c](https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c).
 
-In the project directory, you can run:
+This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/ArweaveTeam/Bounties/1/2929). The Arweave / Permaweb is a method of permanent storage on the Internet using blockchain technology, with crypto mining used to economically incentivise data storage.
+
+# Release V1.0.0
+- Minimized feature set
+- Play/Stop button
+- Tempo control
+- Eight default samples preloaded.
+- Simple name display and volume control per channel.
+- Can save patterns to permaweb.
+- This version just reads the last saved pattern.
+- By default you can create patterns, with the default sample kit.
+- Loading/Saving (Read/Write) to permaweb require a wallet key file.
+
+## Future Features
+- User samples can be loaded from the permaweb.
+- Channels are flexible, can add/remove.
+- Multiple effects per channel.
+- Ability choose a pattern save name.
+- Browse through your saved projects to select one to load.
+
+
+
+# Notes
+
+-This project uses a specially forked version of [React-Music](https://github.com/mcmonkeys1/react-music).
+-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+
+
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
+### h3
+Links [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
