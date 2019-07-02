@@ -81,6 +81,7 @@ npm install base64-arraybuffer
 npm uninstall react-music
 -in react-music fork: npm run build & remove 'lib' from gitignore & push
 npm install mcmonkeys1/react-music#sample-arraybuffer
+npm uninstall react-music; npm install mcmonkeys1/react-music
 
 npm install @material-ui/lab
 -issue with outdated modules, fixing with:
@@ -117,3 +118,13 @@ URL: https://arweave.net/LjNbROpArTJUKiZUhQxRAnyzNu-Ph4ibJsALBIZn5Rk
 -assets not being loaded after arweave package, se this brfore npm run build:
 $env:GENERATE_SOURCEMAP = "false"
 -Seems to fix the issue
+
+###### OK major issue found. Chrome is being an ass: "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page."
+	-access to AudioContext from UI requires a rewrite of the React-Music library
+		HACK! Expose context as window.reactMusicContext
+	-and addition to play code in HotdogRS that checks for suspended state.
+-issue resolved.
+/////////////////////////////////////////////////
+# Atempt 2
+https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c
+/////////////////////////////////////////////////

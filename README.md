@@ -26,20 +26,6 @@ This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/Ar
 
 # Notes
 
--This project uses a specially forked version of [React-Music](https://github.com/mcmonkeys1/react-music).
--This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
-
-
-
-
-### `npm start`
-
-
-
-
-## Learn More
-### h3
-Links [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- This project uses a specially forked version of [React-Music](https://github.com/mcmonkeys1/react-music).
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
