@@ -125,6 +125,9 @@ $env:GENERATE_SOURCEMAP = "false"
 	-and addition to play code in HotdogRS that checks for suspended state.
 -issue resolved.
 /////////////////////////////////////////////////
-# Atempt 2
+# Attempt 2
 https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c
+/////////////////////////////////////////////////
+# Attempt 3
+https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw
 /////////////////////////////////////////////////

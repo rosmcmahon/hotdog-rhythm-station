@@ -219,7 +219,7 @@ class App extends React.Component {
 					alignItems="center"
 					wrap="nowrap"
 				>
-					<Grid item xs={2}  >
+					<Grid item xs={12} sm={4} >
 						<Button 
 							variant="outlined"
 							margin="normal"
@@ -239,7 +239,7 @@ class App extends React.Component {
 							<SaveIcon  />
 						</Button>
 					</Grid>
-					<Grid item xs={10} >
+					<Grid item xs={12} sm={8} >
 						<ChannelGrid 
 							sequencegrid={this.state.sequences} 
 							gains={this.state.gains} 

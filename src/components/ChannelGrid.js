@@ -5,7 +5,7 @@ export default function ChannelGrid ({sequencegrid, stepChange, gains, names, on
 	let index = 0; //we're using the map like a for-loop
 	const sequences = sequencegrid
 	return (
-		<div style={{ width: 900, overflow: 'scroll', textAlign: 'initial' }}>
+		<div style={{ width: 900, overflow: 'auto', textAlign: 'initial' }}>
 			{
 				sequences.map(() => (
 					<React.Fragment key={""+index}> 

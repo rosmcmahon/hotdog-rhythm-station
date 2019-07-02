@@ -1,6 +1,6 @@
 # Hotdog Rhythm Station
 
-A version of this app can be found running [https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c](https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c).
+A version of this app can be found running [https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw](https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw).
 
 This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/ArweaveTeam/Bounties/1/2929). The Arweave / Permaweb is a method of permanent storage on the Internet using blockchain technology, with crypto mining used to economically incentivise data storage.
 
