@@ -131,3 +131,8 @@ https://arweave.net/ECeUsqXWi747iUeHlSeiL8euHNPR95JsACOUArBAE6c
 # Attempt 3
 https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw
 /////////////////////////////////////////////////
+
+TODO:
+- import roboto font properly - unneeded fonts are getting imported by arweave deploy script and then 404ed in production
+- fix slider event issue - it's horrible! unusable.
+- turn channel/sample data into objects
