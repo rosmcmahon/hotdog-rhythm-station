@@ -1,7 +1,7 @@
 import React from 'react';
 import Step from'./Step';
-import { Paper } from '@material-ui/core';
-import { Slider } from '@material-ui/lab'
+import { Paper, Slider } from '@material-ui/core';
+//import { Slider } from '@material-ui/lab'
 
 
 

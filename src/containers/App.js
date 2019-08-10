@@ -192,8 +192,8 @@ class App extends React.Component {
 		}
 	}
 	playClick () {
-		var audioCtx = window.reactMusicContext;
-		if(audioCtx.state === 'suspended') { //Hack for Chrome
+		var audioCtx = window.reactMusicContext; //Hack for Chrome
+		if(audioCtx.state === 'suspended') { 
 				audioCtx.resume().then( () => {
 					if (!this.state.playing) { this.setState({ playing: true, playText: "STOP" }) }
 					else { this.setState({ playing: false, playText: "PLAY" }) }
