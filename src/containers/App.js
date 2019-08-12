@@ -94,13 +94,13 @@ class App extends React.Component {
 	}
 	/* Event Handlers */
 	onChangeGain = channel => (event, value) => {
-		this.setState( ({gains}) => (
-			{ gains: [
+		this.setState( ({gains}) => {
+			return { gains: [
 				...gains.slice(0,channel),
 				value,
 				...gains.slice(channel+1)
 			]}
-		))
+		})
 	}
 	onClickLoad (){
 		const wallet = this.state.userWallet

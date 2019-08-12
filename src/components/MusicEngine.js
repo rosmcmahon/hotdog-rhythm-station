@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Song, Sequencer, Sampler } from 'react-music';
 
@@ -24,26 +25,24 @@ export default class MusicEngine extends React.Component {
 		let channel = 0; //use this in mapping below
 		
 		return (
-			<div>
-				<Song 
-					playing={this.props.playing}
-					tempo={this.props.tempo}
+			<Song 
+				playing={this.props.playing}
+				tempo={this.props.tempo}
+			>
+				<Sequencer
+					resolution={this.props.numSteps}
+					bars={1} // hardcoded ...for now
 				>
-					<Sequencer
-						resolution={this.props.numSteps}
-						bars={1} // hardcoded ...for now
-					>
-						{ this.props.sequences.map((s) => (
-							<Sampler
-								gain={this.props.gains[channel]}
-								key={channel}
-								sample={this.props.samples[channel]}
-								steps={activeSteps[channel++]}
-							/>
-						))}
-					</Sequencer>
-				</Song>
-			</div>
+					{ this.props.sequences.map((s) => (
+						<Sampler
+							gain={this.props.gains[channel]}
+							key={channel}
+							sample={this.props.samples[channel]}
+							steps={activeSteps[channel++]}
+						/>
+					))}
+				</Sequencer>
+			</Song>
 		)//end return
 	}//end render
 }//end class
