@@ -137,5 +137,27 @@ TODO:
 - fix slider event issue - it's horrible! unusable.
 - turn channel/sample data into objects
 
-HotdogS on the web: [Arweave Newsletter July 2019] (https://arweave.net/VOKAC_SYiUzbJrEaIY5SEBh1pf0bGQOd8c7G68nzet4#/view/ThnQFpYNH0QpUzD0GqqvdNXaiorjJhxDs96lAABu3sk)
+Hotdogs on the web: [Arweave Newsletter July 2019] (https://arweave.net/VOKAC_SYiUzbJrEaIY5SEBh1pf0bGQOd8c7G68nzet4#/view/ThnQFpYNH0QpUzD0GqqvdNXaiorjJhxDs96lAABu3sk)
 Even more Hotdog on the web :-) (https://medium.com/@arweave/community-spotlight-meeting-ros-f8938cf61669)
+
+Hotdog on the web again =) [Spotlight on me / the author](https://medium.com/@arweave/community-spotlight-meeting-ros-f8938cf61669)
+///////////////////
+
+updated material-ui
+removed @material-ui/lab
+added Slider from material-ui/core 
+-done
+
+TODO:
+	-refactor login/header code. app passes setWallet function -> header/login does setWallet(wallet) -> app does setstate(wallet)
+	-move to Header: 	
+		onClickSignin () {
+			this.setState({ openLogin: true })
+		}
+		onCloseLogin () {
+			this.setState({ openLogin: false })
+		}
+	-refactor App.render
+
+
+

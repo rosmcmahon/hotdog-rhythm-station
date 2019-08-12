@@ -212,14 +212,13 @@ class App extends React.Component {
 					<Login onClose={this.onCloseLogin} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
 				</header>
 				<StatusBox msg={this.state.status} />
+				
 				<Grid
 					container
 					direction="row"
 					justify="center"
-					alignItems="center"
-					wrap="nowrap"
 				>
-					<Grid item xs={12} sm={4} >
+					<Grid item xs={12} md={4} >
 						<Button 
 							variant="outlined"
 							margin="normal"
@@ -239,7 +238,7 @@ class App extends React.Component {
 							<SaveIcon  />
 						</Button>
 					</Grid>
-					<Grid item xs={12} sm={8} >
+					<Grid item xs={12} md={8} >
 						<ChannelGrid 
 							sequencegrid={this.state.sequences} 
 							gains={this.state.gains} 
