@@ -24,9 +24,8 @@ export default function Channel ({channel, seq, stepChange, gain, name, onChange
 			</span>
 			<Paper component="span" style={{padding: 5}}>
 				<Slider 
-					id={channel} 
 					value={gain} 
-					onChange={onChangeGain} 
+					onChange={onChangeGain(channel)} 
 					min={0.0}
 					max={1.0}
 					step={0.01}

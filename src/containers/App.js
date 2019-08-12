@@ -93,11 +93,14 @@ class App extends React.Component {
 		this.onChangeGain = this.onChangeGain.bind(this);
 	}
 	/* Event Handlers */
-	onChangeGain (event, value) {
-		let channel = event.target.id
-		let gains = JSON.parse(JSON.stringify(this.state.gains))
-		gains[channel] = value
-		this.setState({ gains: gains })
+	onChangeGain = channel => (event, value) => {
+		this.setState( ({gains}) => (
+			{ gains: [
+				...gains.slice(0,channel),
+				value,
+				...gains.slice(channel+1)
+			]}
+		))
 	}
 	onClickLoad (){
 		const wallet = this.state.userWallet
