@@ -1,14 +1,13 @@
 import React from 'react'
-import Image3dDog from '../assets/Image3dDog'
+import './App.css'
+import Header from './Header'
 import { Grid, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import SendIcon from '@material-ui/icons/Send'
-import './App.css'
 import TempoField from '../components/TempoField'
 import ChannelGrid from '../components/ChannelGrid'
 import MusicEngine from '../components/MusicEngine'
 import StatusBox from '../components/StatusBox';
-import Login from '../components/Login'
 import * as DataStorage from '../utils/DataStorage'
 import { decode } from 'base64-arraybuffer';
 import Samples from '../assets/Samples'
@@ -79,18 +78,15 @@ class App extends React.Component {
 			status: "",
 			//arweave stuff
 			userWallet: {},
-			btnSigninText: "Sign In",
-			openLogin: false
+
 		}
 		this.stepChange = this.stepChange.bind(this);
 		this.tempoChange = this.tempoChange.bind(this);
 		this.playClick = this.playClick.bind(this);
-		this.onClickSignin = this.onClickSignin.bind(this);
-		this.onChangeLogin = this.onChangeLogin.bind(this);
 		this.onClickSave = this.onClickSave.bind(this);
 		this.onClickLoad = this.onClickLoad.bind(this);
-		this.onCloseLogin = this.onCloseLogin.bind(this);
 		this.onChangeGain = this.onChangeGain.bind(this);
+		this.onLoadWallet = this.onLoadWallet.bind(this);
 	}
 	/* Event Handlers */
 	onChangeGain = channel => (event, value) => {
@@ -154,27 +150,8 @@ class App extends React.Component {
 		this.setState({status:"Sending project to the permaweb..."})
 
 	}
-	onClickSignin () {
-		this.setState({ openLogin: true })
-	}
-	onCloseLogin () {
-		this.setState({ openLogin: false })
-	}
-	onChangeLogin (event) {
-		var wallet = {}
-		var fr = new FileReader()
-		fr.onload = (ev) => {
-			try {
-				wallet = JSON.parse(ev.target.result)
-					
-				this.setState({ userWallet: wallet, btnSigninText: "Signed In"})
-
-			} catch (err) {
-					alert('Error logging in: ' + err)
-			}
-		}
-		fr.readAsText( event.target.files[0] )
-		this.setState({openLogin: false})
+	onLoadWallet(wallet) {
+		this.setState({ userWallet: wallet })
 	}
 	stepChange (event) {
 		let step = event.target
@@ -209,13 +186,8 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className='App'>
-				<header className="App-header">
-					<Image3dDog />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
-					<Button margin="normal" variant="outlined" color="primary" onClick={this.onClickSignin}>{this.state.btnSigninText}</Button>
-					<Login onClose={this.onCloseLogin} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
-				</header>
-				<StatusBox msg={this.state.status} />
-				
+				<Header onLoadWallet={this.onLoadWallet} />
+				<StatusBox msg={this.state.status} />			
 				<Grid
 					container
 					direction="row"
