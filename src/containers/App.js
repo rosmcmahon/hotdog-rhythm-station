@@ -69,7 +69,6 @@ class App extends React.Component {
 			numChannels: numChannels,
 			numSteps: numSteps,
 			playing: false,
-			playText: "PLAY",
 			tempo: 140,
 			sequences: sequences,
 			samples: samples,
@@ -175,12 +174,12 @@ class App extends React.Component {
 		var audioCtx = window.reactMusicContext; //Hack for Chrome
 		if(audioCtx.state === 'suspended') { 
 				audioCtx.resume().then( () => {
-					if (!this.state.playing) { this.setState({ playing: true, playText: "STOP" }) }
-					else { this.setState({ playing: false, playText: "PLAY" }) }
+					if (!this.state.playing) { this.setState({ playing: true }) }
+					else { this.setState({ playing: false }) }
 				});  
 		}else{
-			if (!this.state.playing) { this.setState({ playing: true, playText: "STOP" }) }
-			else { this.setState({ playing: false, playText: "PLAY" }) }
+			if (!this.state.playing) { this.setState({ playing: true }) }
+			else { this.setState({ playing: false }) }
 		}
 	}
 	render() {
@@ -201,7 +200,7 @@ class App extends React.Component {
 							size="large"
 							onClick={this.playClick}
 						>
-							{this.state.playText}
+							{this.state.playing ? "STOP" : "PLAY"}
 						</Button>
 						<TempoField value={this.state.tempo} tempoChange={this.tempoChange} />
 						<Button variant="contained" size="medium" onClick={this.onClickSave}>
