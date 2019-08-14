@@ -134,7 +134,7 @@ https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw
 
 TODO:
 - import roboto font properly - unneeded fonts are getting imported by arweave deploy script and then 404ed in production
-- fix slider event issue - it's horrible! unusable.
+- DONE! *fix slider event issue - it's horrible! unusable.
 - turn channel/sample data into objects
 
 Hotdogs on the web: [Arweave Newsletter July 2019] (https://arweave.net/VOKAC_SYiUzbJrEaIY5SEBh1pf0bGQOd8c7G68nzet4#/view/ThnQFpYNH0QpUzD0GqqvdNXaiorjJhxDs96lAABu3sk)
@@ -148,7 +148,7 @@ removed @material-ui/lab
 added Slider from material-ui/core 
 -done
 
-TODO:
+DONE:
 	-refactor login/header code. app passes setWallet function -> header/login does setWallet(wallet) -> app does setstate(wallet)
 	-move to Header: 	
 		onClickSignin () {
@@ -158,6 +158,17 @@ TODO:
 			this.setState({ openLogin: false })
 		}
 	-refactor App.render
+-yep done.
 
 
-
+TODO: create lightweight objects without methods to store in state, and use like this:
+	var ChannelObject = {
+			numSteps: 16,  //<- maybe this does not go here
+			sample: {},
+			name: '',
+			sequence: [],
+			activeSteps: [],
+			gain: 0.5,
+	}
+	//then do
+	var ch1 = Object.assign({}, ChannelObject)
