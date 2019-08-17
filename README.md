@@ -7,7 +7,7 @@ A version of this app can *always* be found:
 
 This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/ArweaveTeam/Bounties/1/2929). The Arweave / Permaweb is a method of permanent storage on the Internet using blockchain technology, with crypto mining used to economically incentivise data storage.
 
-# Release V1.0.0
+# Release v1.0.0 - initial release
 - Minimized feature set
 - Play/Stop button
 - Tempo control
@@ -17,6 +17,11 @@ This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/Ar
 - This version just reads the last saved pattern.
 - By default you can create patterns, with the default sample kit.
 - Loading/Saving (Read/Write) to permaweb require a wallet key file.
+
+# Release v1.1.0 - bugfix/performance release
+- Bugfix: responsive design improved for mobile
+- Code refactoring to simplify code and prepare for future features
+- Performance bugfixes
 
 ## Future Features
 - User samples can be loaded from the permaweb.
