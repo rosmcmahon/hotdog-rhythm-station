@@ -135,7 +135,7 @@ https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw
 TODO:
 - import roboto font properly - unneeded fonts are getting imported by arweave deploy script and then 404ed in production
 - DONE! *fix slider event issue - it's horrible! unusable.
-- turn channel/sample data into objects
+- DONE! turn channel/sample data into objects
 
 Hotdogs on the web: [Arweave Newsletter July 2019] (https://arweave.net/VOKAC_SYiUzbJrEaIY5SEBh1pf0bGQOd8c7G68nzet4#/view/ThnQFpYNH0QpUzD0GqqvdNXaiorjJhxDs96lAABu3sk)
 Even more Hotdog on the web :-) (https://medium.com/@arweave/community-spotlight-meeting-ros-f8938cf61669)
@@ -161,7 +161,7 @@ DONE:
 -yep done.
 
 
-TODO: create lightweight objects without methods to store in state, and use like this:
+DONE: create lightweight objects without methods to store in state, and use like this:
 	var ChannelObject = {
 			numSteps: 16,  //<- maybe this does not go here
 			sample: {},
@@ -172,3 +172,9 @@ TODO: create lightweight objects without methods to store in state, and use like
 	}
 	//then do
 	var ch1 = Object.assign({}, ChannelObject)
+
+- DONE! *fix slider event issue - it's horrible! unusable.
+- DONE! turn channel/sample data into objects
+updated version number to 1.10 due to state changes, breaking previous pattern saves. We should probably standardize the project json format rather than dumping everything.
+-uploading to permaweb:
+	https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA
