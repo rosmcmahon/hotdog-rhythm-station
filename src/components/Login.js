@@ -26,7 +26,7 @@ export default function Login ({onClose, open, onChangeFile}) {
 							<br/>
 							Hotdog Rhythm Station is a drum machine that lives on the permaweb. Your drum patterns are saved to the permaweb forever.<br/>
 							Permanency saves take some time to process, please be patient and pay attention to in app messages<br/>
-							Remember, when your project is sent to the permaweb it &amp; this drum machine will always be available...
+							Remember, when your project is sent to the permaweb it &amp; this drum machine will always be available...<br />
 							<span style={{display: "inline-block", marginTop: "0.5em", marginBottom: "0.75em"}}>...so be careful what you save! ;-)</span>
 				</Typography>
 				<Button 

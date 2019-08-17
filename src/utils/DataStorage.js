@@ -3,7 +3,7 @@ import Arweave from 'arweave/web';
 
 // Not sure why I hate global variables so much. Feels like failure :-/
 const appId = "hotdog-rhythm-station"
-const appVersion = "1.0.0"
+const appVersion = "1.1.0"
 console.log("USING App-Id: "+ appId )
 console.log("USING App-Version: "+ appVersion)
 

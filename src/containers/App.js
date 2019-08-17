@@ -11,6 +11,7 @@ import StatusBox from '../components/StatusBox';
 import * as DataStorage from '../utils/DataStorage'
 import { decode } from 'base64-arraybuffer';
 import Samples from '../assets/Samples'
+import {CreateChannelObj} from '../utils/CreateChannelObj'
 
 /* this is for toast popups */
 import { toast } from 'react-toastify';
@@ -32,52 +33,26 @@ const { TR909_kick_hi,
 class App extends React.Component {
 	constructor() {
 		super();
-		const numChannels = 8; 
-		const numSteps = 16; 
-		
-		//init sequences with falses 
-		let sequences = [];
-		for(let i=0; i<numChannels; ++i){
-			sequences[i] = Array(numSteps).fill(false); 
-		}
 
 		/* hardcode samples for release v1 - in future will be dynamically loaded from permaweb */
-		// ***** NEED TO REWRITE THE SAMPLES/CHANNELS AS OBJECTS & GET RID OF ALL THE STUPID ARRAYS ****
-		let gains = Array(numChannels).fill( 0.5 );
-		let samples = Array(numChannels).fill(null);
-		let names = Array(numChannels).fill("");
-		samples[0] = decode(TR909_kick_hi)
-		samples[1] = decode(TR909_clap)
-		samples[2] = decode(TR909_snare)
-		samples[3] = decode(TR909_closedhat)
-		samples[4] = decode(TR909_openhat)
-		samples[5] = decode(TR909_rimshot)
-		samples[6] = decode(TR909_ride)
-		samples[7] = decode(TR909_tom_1)
-		names[0] = "TR909_kick_hi"
-		names[1] = "TR909_clap"
-		names[2] = "TR909_snare"
-		names[3] = "TR909_closedhat"
-		names[4] = "TR909_openhat"
-		names[5] = "TR909_rimshot"
-		names[6] = "TR909_ride"
-		names[7] = "TR909_tom_1"
-
+		let chans = []
+		chans.push( CreateChannelObj( decode(TR909_kick_hi), "TR909_kick_hi" ) )
+		chans.push( CreateChannelObj( decode(TR909_clap), "TR909_clap" ) )
+		chans.push( CreateChannelObj( decode(TR909_snare), "TR909_snare" ) )
+		chans.push( CreateChannelObj( decode(TR909_closedhat), "TR909_closedhat" ) )
+		chans.push( CreateChannelObj( decode(TR909_openhat), "TR909_openhat" ) )
+		chans.push( CreateChannelObj( decode(TR909_rimshot), "TR909_rimshot" ) )
+		chans.push( CreateChannelObj( decode(TR909_ride), "TR909_ride" ) )
+		chans.push( CreateChannelObj( decode(TR909_tom_1), "TR909_tom_1" ) )
 
 		// set app state
 		this.state = {
-			numChannels: numChannels,
-			numSteps: numSteps,
 			playing: false,
 			tempo: 140,
-			sequences: sequences,
-			samples: samples,
-			gains: gains,
-			names: names,
+			chans: chans,
 			status: "",
 			//arweave stuff
 			userWallet: {},
-
 		}
 		this.stepChange = this.stepChange.bind(this);
 		this.tempoChange = this.tempoChange.bind(this);
@@ -89,11 +64,14 @@ class App extends React.Component {
 	}
 	/* Event Handlers */
 	onChangeGain = channel => (event, value) => {
-		this.setState( ({gains}) => {
-			return { gains: [
-				...gains.slice(0,channel),
-				value,
-				...gains.slice(channel+1)
+		this.setState( ({chans}) => {
+			channel = parseInt(channel)
+			let o = Object.assign({}, chans[channel])
+			o.gain = value
+			return { chans: [
+				...chans.slice(0,channel),
+				o,
+				...chans.slice(channel+1)
 			]}
 		})
 	}
@@ -153,14 +131,19 @@ class App extends React.Component {
 		this.setState({ userWallet: wallet })
 	}
 	stepChange (event) {
-		let step = event.target
-		let check = step.checked;
-		let seq = step.id;
-		let channel = step.value;
+		let check = event.target.checked
+		let step = event.target.id
+		let channel = parseInt(event.target.value)
 
-		const newSequences = JSON.parse(JSON.stringify(this.state.sequences))
-		newSequences[channel][seq] = check;
-		this.setState({ sequences: newSequences });
+		this.setState(({chans}) => {
+			let o = Object.assign({}, chans[channel])
+			o.sequence[step] = check
+			return { chans: [
+				...chans.slice(0,channel),
+				o,
+				...chans.slice(channel+1,chans.length)
+			]}
+		})
 	}
 	tempoChange (event) {
 		let newText = event.target.value
@@ -214,9 +197,7 @@ class App extends React.Component {
 					</Grid>
 					<Grid item xs={12} md={8} >
 						<ChannelGrid 
-							sequencegrid={this.state.sequences} 
-							gains={this.state.gains} 
-							names={this.state.names} 
+							chans={this.state.chans} 
 							stepChange={this.stepChange} 
 							onChangeGain={this.onChangeGain} 
 						/>
@@ -225,11 +206,7 @@ class App extends React.Component {
 				<MusicEngine 
 					playing={this.state.playing} 
 					tempo={this.state.tempo}
-					numSteps={this.state.numSteps}
-					numChannels={this.state.numChannels}
-					sequences={this.state.sequences}
-					samples={this.state.samples}
-					gains={this.state.gains}
+					chans={this.state.chans}
 				/>
 			</div>
   	);
