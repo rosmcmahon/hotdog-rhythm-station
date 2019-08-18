@@ -3,13 +3,15 @@ import './Header.css'
 import Image3dDog from '../assets/Image3dDog'
 import Login from '../components/Login'
 import { Button } from '@material-ui/core'
+import * as ArweaveId from '../utils/ArweaveFunctions'
 
 export default class Header extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
 			btnSigninText: "Sign In",
-			openLogin: false
+			openLogin: false,
+			username: '',
 		}
 
 		this.onClickSignin = this.onClickSignin.bind(this);
@@ -32,6 +34,8 @@ export default class Header extends React.Component {
 				this.setState({ btnSigninText: "Signed In"})
 
 				this.props.onLoadWallet(wallet)
+				
+				ArweaveId.getArweaveID(wallet).then((username)=>this.setState({username}))
 
 			} catch (err) {
 					alert('Error logging in: ' + err)
@@ -46,6 +50,7 @@ export default class Header extends React.Component {
 				<Image3dDog />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
 				<Button margin="normal" variant="outlined" color="primary" onClick={this.onClickSignin}>{this.state.btnSigninText}</Button>
 				<Login onClose={this.onCloseLogin} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
+				<h3>{this.state.username}</h3>
 			</header>
 		)
 	}

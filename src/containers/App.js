@@ -8,7 +8,7 @@ import TempoField from '../components/TempoField'
 import ChannelGrid from '../components/ChannelGrid'
 import MusicEngine from '../components/MusicEngine'
 import StatusBox from '../components/StatusBox';
-import * as DataStorage from '../utils/DataStorage'
+import * as DataStorage from '../utils/ArweaveFunctions'
 import { decode } from 'base64-arraybuffer';
 import Samples from '../assets/Samples'
 import {CreateChannelObj} from '../utils/CreateChannelObj'

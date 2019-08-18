@@ -1,5 +1,7 @@
 # Hotdog Rhythm Station
 
+A permanently online drum machine, using React & Arweave.
+
 A version of this app can *always* be found:
 
 - v1.0.0 [https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw](https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw)

@@ -176,5 +176,8 @@ DONE: create lightweight objects without methods to store in state, and use like
 - DONE! *fix slider event issue - it's horrible! unusable.
 - DONE! turn channel/sample data into objects
 updated version number to 1.10 due to state changes, breaking previous pattern saves. We should probably standardize the project json format rather than dumping everything.
--uploading to permaweb:
+-uploading v1.1.0 to permaweb:
 	https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA
+	arweaveapps.com _F8mgcZbiKs6vmaXg79ETkLsG6h1QDq5FyCOIAmO8Zk
+
+
