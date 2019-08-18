@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import Header from './Header'
+import Footer from '../components/Footer'
 import { Grid, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import SendIcon from '@material-ui/icons/Send'
@@ -167,7 +168,7 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-			<div className='App'>
+			<div className='App'><div className="content-wrap">
 				<Header onLoadWallet={this.onLoadWallet} />
 				<StatusBox msg={this.state.status} />			
 				<Grid
@@ -208,7 +209,8 @@ class App extends React.Component {
 					tempo={this.state.tempo}
 					chans={this.state.chans}
 				/>
-			</div>
+				<Footer />
+			</div></div>
   	);
 	}
 }
