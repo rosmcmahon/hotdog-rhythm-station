@@ -25,6 +25,10 @@ This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/Ar
 - Code refactoring to simplify code and prepare for future features
 - Performance bugfixes
 
+# Release v1.1.1 - minor additions
+- Added Arweave-ID support
+- added footer with links
+
 ## Future Features
 - User samples can be loaded from the permaweb.
 - Channels are flexible, can add/remove.

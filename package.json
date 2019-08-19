@@ -1,6 +1,6 @@
 {
   "name": "hotdog-rhythm-station",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": ".",
   "private": true,
   "author": "rosmcmahon@gmail.com",
@@ -15,7 +15,7 @@
     "react-music": "github:mcmonkeys1/react-music",
     "react-scripts": "3.0.1",
     "react-toastify": "^5.3.2",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.75"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -179,5 +179,7 @@ updated version number to 1.10 due to state changes, breaking previous pattern s
 -uploading v1.1.0 to permaweb:
 	https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA
 	arweaveapps.com _F8mgcZbiKs6vmaXg79ETkLsG6h1QDq5FyCOIAmO8Zk
-
-
+added ArweaveId support in header
+added footer with github & arweave links
+manually inlined arweave & github images
+deployed: https://arweave.net/-5uukZGzlv8TKQ8nq4N4_pHuHZleTJa2dZtXtBR6ibE
