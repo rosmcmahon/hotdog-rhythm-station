@@ -112,7 +112,7 @@ export async function loadProject (wallet, state) {
 	{
 		op: 'and',
 		expr1: { op: 'equals', expr1: 'from', expr2: address },
-		expr2: { op: 'equals', expr1: 'App-Id', expr2: appId	}
+		expr2: { op: 'equals', expr1: 'App-Name', expr2: appName	}
 	}
 
 	const txids = await arweave.arql(getAllProjects);
