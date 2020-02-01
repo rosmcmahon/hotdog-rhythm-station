@@ -183,3 +183,26 @@ added ArweaveId support in header
 added footer with github & arweave links
 manually inlined arweave & github images
 deployed: https://arweave.net/-5uukZGzlv8TKQ8nq4N4_pHuHZleTJa2dZtXtBR6ibE
+
+
++----------------------------------------------------------------------+
+|            Let's Force Fullscreen & Landscape on Mobile !!           |
++----------------------------------------------------------------------+
+
+	<script>
+		function ready() {
+			const {
+				type
+			} = screen.orientation;
+			console.log(`Fullscreen and locked to ${type}. Ready!`);
+		}
+
+		async function start() {
+			await document.body.requestFullscreen();
+			await screen.orientation.lock("landscape");
+			ready();
+		}
+	</script>
+	<button onclick="start()">
+		Start
+	</button>

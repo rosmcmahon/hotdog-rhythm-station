@@ -3,9 +3,9 @@ import Arweave from 'arweave/web';
 import React from 'react' /* I lied ;-) using some JSX below */
 
 // Not sure why I hate global variables so much. Feels like failure :-/
-const appId = "hotdog-rhythm-station"
-const appVersion = "1.1.0"
-console.log("USING App-Id: "+ appId )
+const appName = "hotdog-rhythm-station"
+const appVersion = "1.1.2"
+console.log("USING App-Name: "+ appName )
 console.log("USING App-Version: "+ appVersion)
 
 
@@ -63,7 +63,7 @@ export async function saveProject (name, save, wallet, appObj) {
 		data: Buffer.from(save,'utf-8')
 	}, wallet)
 	
-	tx.addTag('App-Id', appId)
+	tx.addTag('App-Name', appName)
 	tx.addTag('App-Version', appVersion)
 	tx.addTag('File-Name', name)
 	tx.addTag('Unix-Time', Date.now() )
