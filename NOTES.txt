@@ -191,9 +191,7 @@ deployed: https://arweave.net/-5uukZGzlv8TKQ8nq4N4_pHuHZleTJa2dZtXtBR6ibE
 
 	<script>
 		function ready() {
-			const {
-				type
-			} = screen.orientation;
+			const { type } = screen.orientation;
 			console.log(`Fullscreen and locked to ${type}. Ready!`);
 		}
 

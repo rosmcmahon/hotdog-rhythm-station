@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import Image3dDog from '../assets/Image3dDog'
+import imgSrcHotdog from '../assets/icon.png'
 import Login from '../components/Login'
 import { Button } from '@material-ui/core'
 import * as ArweaveId from '../utils/ArweaveFunctions'
@@ -46,8 +46,9 @@ export default class Header extends React.Component {
 	}
 	render() {
 		return (
-			<header className="App-header">
-				<Image3dDog />&nbsp;&nbsp;<h1>Hotdog Rhythm Station</h1>
+			<header className="app-header">
+				<img src={imgSrcHotdog} height='50'/>
+				<h1>Hotdog Rhythm Station</h1>
 				<Button margin="normal" variant="outlined" color="primary" onClick={this.onClickSignin}>{this.state.btnSigninText}</Button>
 				<Login onClose={this.onCloseLogin} open={this.state.openLogin} onChangeFile={this.onChangeLogin} />
 				<h3>{this.state.username}</h3>

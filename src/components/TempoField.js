@@ -30,7 +30,7 @@ export default class TempoField extends React.Component {
 				InputLabelProps={{
 					shrink: true,
 				}}
-				margin="normal"
+				margin="dense"
 				variant="outlined"
 				InputProps={{
 					endAdornment: <InputAdornment position="end">BPM</InputAdornment>,

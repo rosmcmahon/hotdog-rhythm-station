@@ -1,18 +1,18 @@
 import React from 'react'
 import './App.css'
-import Header from './Header'
-import Footer from '../components/Footer'
+import Header from './containers/Header'
+import Footer from './components/Footer'
 import { Grid, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import SendIcon from '@material-ui/icons/Send'
-import TempoField from '../components/TempoField'
-import ChannelGrid from '../components/ChannelGrid'
-import MusicEngine from '../components/MusicEngine'
-import StatusBox from '../components/StatusBox';
-import * as DataStorage from '../utils/ArweaveFunctions'
+import TempoField from './components/TempoField'
+import ChannelGrid from './components/ChannelGrid'
+import MusicEngine from './components/MusicEngine'
+import StatusBox from './components/StatusBox';
+import * as DataStorage from './utils/ArweaveFunctions'
 import { decode } from 'base64-arraybuffer';
-import Samples from '../assets/Samples'
-import {CreateChannelObj} from '../utils/CreateChannelObj'
+import Samples from './assets/Samples'
+import {CreateChannelObj} from './utils/CreateChannelObj'
 
 /* this is for toast popups */
 import { toast } from 'react-toastify';
@@ -170,45 +170,47 @@ class App extends React.Component {
 		return (
 			<div className='App'><div className="content-wrap">
 				<Header onLoadWallet={this.onLoadWallet} />
-				<StatusBox msg={this.state.status} />			
-				<Grid
-					container
-					direction="row"
-					justify="center"
-				>
-					<Grid item xs={12} md={4} >
-						<Button 
-							variant="outlined"
-							margin="normal"
-							color="secondary"
-							size="large"
-							onClick={this.playClick}
-						>
-							{this.state.playing ? "STOP" : "PLAY"}
-						</Button>
-						<TempoField value={this.state.tempo} tempoChange={this.tempoChange} />
-						<Button variant="contained" size="medium" onClick={this.onClickSave}>
-							Save &nbsp;
-						<SendIcon  />
-						</Button>
-						<Button variant="contained" size="medium"  onClick={this.onClickLoad}>
-							Load &nbsp;
-							<SaveIcon  />
-						</Button>
-					</Grid>
-					<Grid item xs={12} md={8} >
-						<ChannelGrid 
-							chans={this.state.chans} 
-							stepChange={this.stepChange} 
-							onChangeGain={this.onChangeGain} 
-						/>
-					</Grid>
-				</Grid>
-				<MusicEngine 
-					playing={this.state.playing} 
-					tempo={this.state.tempo}
-					chans={this.state.chans}
-				/>
+				<span className="app-body">
+					<StatusBox msg={this.state.status} />			
+					<Grid
+						container
+						direction="row"
+						justify="center"
+					>
+						<Grid item xs={12} md={3} style={{}} >
+							<Button 
+								variant="outlined"
+								margin="normal"
+								color="secondary"
+								size="large"
+								onClick={this.playClick}
+							>
+								{this.state.playing ? "STOP" : "PLAY"}
+							</Button>
+							<TempoField value={this.state.tempo} tempoChange={this.tempoChange} />
+							<Button variant="contained" size="medium" onClick={this.onClickSave}>
+								Save &nbsp;
+							<SendIcon  />
+							</Button>
+							<Button variant="contained" size="medium"  onClick={this.onClickLoad}>
+								Load &nbsp;
+								<SaveIcon  />
+							</Button>
+						</Grid>
+						<Grid item xs={12} md={9} >
+							<ChannelGrid 
+								chans={this.state.chans} 
+								stepChange={this.stepChange} 
+								onChangeGain={this.onChangeGain} 
+							/>
+						</Grid>
+					</Grid> 
+					<MusicEngine 
+						playing={this.state.playing} 
+						tempo={this.state.tempo}
+						chans={this.state.chans}
+					/>
+				</span>
 				<Footer />
 			</div></div>
   	);
