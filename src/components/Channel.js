@@ -8,7 +8,7 @@ export default function Channel ({channel, seq, stepChange, gain, name, onChange
 	var index = 0;
 	return (
 		<span>
-			<span style={{textAlign: 'left'}}>
+			<span>
 			{
 				// This unfolds the input sequence of boolean checks into a loop creating Step components
 				seq.map((s) => (
@@ -30,7 +30,6 @@ export default function Channel ({channel, seq, stepChange, gain, name, onChange
 					max={1.0}
 					step={0.01}
 					style={{width: 50, padding: 5}}
-					
 				/>
 				<span >{name}</span>
 			</Paper>

@@ -4,19 +4,23 @@ import { Paper } from '@material-ui/core';
 
 export default function StatusBox ({msg}) {
 	let visible = (msg==="")?'none':''
-	const style = {
+
+	let styleVariable = {
 		margin: 0,
-		padding: 20,
-		top: 20,
+		padding: 10,
+		top: 10,
+		left: 10,
 		right: 'auto',
 		bottom: 'auto',
-		left: 20,
 		position: 'fixed', 
 		backgroundColor: '#07bc0c',
-		width: 320,
+		width: '95%',
 		display: visible,
 	};
+
+
 	return (
-		<Paper style={style} > {msg} </Paper>
+		<Paper style={styleVariable} > {msg} </Paper>
 	)
 }
+

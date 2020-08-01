@@ -1,16 +1,11 @@
 .app-footer {
   background-color: #282c34;
-	/* min-height: 10vh; */
   display: flex;
   flex-direction: row;
   align-items: center;
 	justify-content: flex-start;
 	padding: 10px;
 	color: white;
-	/* Put to bottom of page-container */
-	/* position: absolute;
-	bottom: 0;
-	width: 100%; */
 }
 a {
 	color: inherit;

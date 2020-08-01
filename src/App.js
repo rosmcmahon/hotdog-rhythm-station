@@ -168,7 +168,7 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-			<div className='App'><div className="content-wrap">
+			<div className="content-wrap">
 				<Header onLoadWallet={this.onLoadWallet} />
 				<span className="app-body">
 					<StatusBox msg={this.state.status} />			
@@ -212,7 +212,7 @@ class App extends React.Component {
 					/>
 				</span>
 				<Footer />
-			</div></div>
+			</div>
   	);
 	}
 }

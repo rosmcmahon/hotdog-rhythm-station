@@ -4,7 +4,7 @@ import Channel from'./Channel';
 export default function ChannelGrid ({chans, stepChange, onChangeGain}) {
 	let i = 0; //we're using the map like a for-loop
 	return (
-		<div style={{ width: 900, overflow: 'auto', textAlign: 'initial' }}>
+		<div style={styleGrid}>
 			{
 				chans.map(() => (
 					<React.Fragment key={""+i}> 
@@ -24,4 +24,10 @@ export default function ChannelGrid ({chans, stepChange, onChangeGain}) {
 	)
 
 
+}
+
+const styleGrid = { 
+	minWidth: 590, 
+	overflow: 'scroll', 
+	textAlign: 'initial' 
 }

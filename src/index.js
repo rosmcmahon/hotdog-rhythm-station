@@ -17,7 +17,7 @@ const theme = createMuiTheme({
 	overrides: {
 		MuiButton: {
 			root: {
-				margin: "15px"
+				margin: "10px"
 			}
 		}
 	}
