@@ -4,7 +4,7 @@ import React from 'react' /* I lied ;-) using some JSX below */
 
 // Not sure why I hate global variables so much. Feels like failure :-/
 const appName = "hotdog-rhythm-station"
-const appVersion = "1.1.2"
+const appVersion = process.env.REACT_APP_APP_VERSION
 console.log("USING App-Name: "+ appName )
 console.log("USING App-Version: "+ appVersion)
 
