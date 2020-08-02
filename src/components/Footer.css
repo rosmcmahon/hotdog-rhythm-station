@@ -1,4 +1,5 @@
 .app-footer {
+	position: relative;
   background-color: #282c34;
   display: flex;
   flex-direction: row;
@@ -11,9 +12,13 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
-
 .icon-frame {
 	width: 20px;
 	height: 20px;
 }
 
+.fullscreen-button {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}

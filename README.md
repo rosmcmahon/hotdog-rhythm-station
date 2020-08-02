@@ -4,11 +4,26 @@ A permanently online drum machine, using React & Arweave.
 
 A version of this app can *always* be found:
 
-- v1.0.0 [https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw](https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw)
-- v1.1.0 [https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA](https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA)
+- v1.2.0 [https://arweave.net/d0AsQGeKCD980GpVbc5glnMci60kdqApavkkgjGmN4I](https://arweave.net/d0AsQGeKCD980GpVbc5glnMci60kdqApavkkgjGmN4I)
 - v1.1.1 [https://arweave.net/-5uukZGzlv8TKQ8nq4N4_pHuHZleTJa2dZtXtBR6ibE](https://arweave.net/-5uukZGzlv8TKQ8nq4N4_pHuHZleTJa2dZtXtBR6ibE)
+- v1.1.0 [https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA](https://arweave.net/i9C71zGFRap--jKKKzcP0TWekW5yLDwByYlr2h7ditA)
+- v1.0.0 [https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw](https://arweave.net/EXU1P4ftbpnv7zmLwL6aV-lbFditgxO2mzwUEIeN1xw)
 
 This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/ArweaveTeam/Bounties/1/2929). The Arweave / Permaweb is a method of permanent storage on the Internet using blockchain technology, with crypto mining used to economically incentivise data storage.
+
+# Release v1.2.0 - UI improvments, breaking savefile change
+- Generally improved UI, different logos, sizing, etc
+- Improved UI on mobile
+- Full screen landscape button for mobile
+
+# Release v1.1.1 - minor additions
+- Added Arweave-ID support
+- added footer with links
+
+# Release v1.1.0 - bugfix/performance release
+- Bugfix: responsive design improved for mobile
+- Code refactoring to simplify code and prepare for future features
+- Performance bugfixes
 
 # Release v1.0.0 - initial release
 - Minimized feature set
@@ -20,15 +35,6 @@ This project was created for the [Arweave Hackathon](https://gitcoin.co/issue/Ar
 - This version just reads the last saved pattern.
 - By default you can create patterns, with the default sample kit.
 - Loading/Saving (Read/Write) to permaweb require a wallet key file.
-
-# Release v1.1.0 - bugfix/performance release
-- Bugfix: responsive design improved for mobile
-- Code refactoring to simplify code and prepare for future features
-- Performance bugfixes
-
-# Release v1.1.1 - minor additions
-- Added Arweave-ID support
-- added footer with links
 
 ## Future Features
 - User samples can be loaded from the permaweb.
